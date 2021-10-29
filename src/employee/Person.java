@@ -1,8 +1,6 @@
 package employee;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 
 public abstract class Person {
 
@@ -23,17 +21,17 @@ public abstract class Person {
 
     private final String firstName; // backing field
     private final String surname;
-    private final LocalDate age;
+    private final LocalDate dob;
 
 
-    protected Person(String firstName, String age, String surname ) {
+    protected Person(String firstName, String dob, String surname ) {
         this.firstName = firstName;
         this.surname = surname;
-        this.age = LocalDate.parse(age);
+        this.dob = LocalDate.parse(dob);
     }
 
-    public LocalDate getAge() {
-        return age;
+    public LocalDate getDob() {
+        return dob;
     }
 
     public String getSurname() {
@@ -46,19 +44,20 @@ public abstract class Person {
 
 
     public short getAgeOfPerson() {
-        int i = LocalDate.now().getYear() - age.getYear();
-        short ages = Short.parseShort(String.valueOf(i));
-        return ages;
+        int i = LocalDate.now().getYear() - dob.getYear();
+        return Short.parseShort(String.valueOf(i));
 
 
     }
 
     @Override
     public String toString() {
+
         return "Person{" +
                 "firstName='" + firstName + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + age +
+                ", birthday='" + dob+ '\'' +
+                ", age=" + getAgeOfPerson() +
                 '}';
     }
 }

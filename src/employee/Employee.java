@@ -1,6 +1,7 @@
 package employee;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Employee extends Person {
     //
@@ -8,22 +9,29 @@ public class Employee extends Person {
     // * salary (use BigDecimal type for representing currency values)
     // * manager (empty if at top of hierarchy)
     private final BigDecimal salary;
-    private final boolean manager;
+    private final Manager manager;
+    private final List<Trainee> staff;
 
 
 
 
-    protected Employee(String firstName, String age, String surname, BigDecimal salary, boolean manager) {
-        super(firstName, age, surname);
+
+    protected Employee(String firstName, String dob, String surname, BigDecimal salary, Manager manager, List<Trainee> staff) {
+        super(firstName, dob, surname);
         this.salary = salary;
         this.manager = manager;
+        this.staff = staff;
+    }
+
+    public List<Trainee> getStaff() {
+        return staff;
     }
 
     public BigDecimal getSalary() {
         return salary;
     }
 
-    public boolean isManager() {
+    public Manager getManager() {
         return manager;
     }
 
@@ -32,7 +40,7 @@ public class Employee extends Person {
         return "Employee{" +
                 "salary=" + salary +
                 ", manager=" + manager + "," + getFirstName() +
-                ","+ getAge() + "," + getSurname() +
+                ","+ getDob() + "," + getSurname() +
                 '}';
     }
 
