@@ -13,7 +13,13 @@ public final class PayrollEntry {
     public PayrollEntry(Employee employee, BigDecimal salary, BigDecimal bonus) {
         this.employee = employee;
         this.salary = salary;
-        this.salaryPlusBonus = salary.add(bonus); // validate whether salary and bonus are not null
+        if(salary!=null && bonus !=null) {
+            this.salaryPlusBonus = salary.add(bonus); // validate whether salary and bonus are not null
+        }else if(salary!= null) {
+            salaryPlusBonus = salary;
+        }else
+            salaryPlusBonus = null;
+
     }
 
     public Employee getEmployee() {
@@ -24,7 +30,13 @@ public final class PayrollEntry {
         return salaryPlusBonus;
     }
 
-    public BigDecimal getSalary() {
-        return salary;
+    @Override
+    public String toString() {
+        return "PayrollEntry{" +
+                "surname=" + employee.getSurname() +
+                "first name="+ employee.getFirstName()+
+                ", salaryPlusBonus=" + salaryPlusBonus +
+                ", salary=" + salary +
+                '}';
     }
 }

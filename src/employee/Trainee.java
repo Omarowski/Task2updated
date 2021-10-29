@@ -1,27 +1,39 @@
 package employee;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Trainee extends Employee {
 
+  // attributes:
+  // * apprenticeship start date
+  // * apprenticeship length (in days)
+  private final LocalDate startDateApprenticeship;
+  private int length;
 
+  public Trainee(
+          String firstName,
+          String surname,
+          LocalDate dob,
+          Manager manager,
+          BigDecimal salary,
+          LocalDate startDateApprenticeship, int length) {
+    super(firstName, surname,dob, manager, salary);
+    this.startDateApprenticeship = startDateApprenticeship;
+    this.length = length;
+    manager.addSubordinates(this);
 
-    // attributes:
-    // * apprenticeship start date
-    // * apprenticeship length (in days)
-    private final Date startDateApprenticeship;
+  }
 
+  public LocalDate getStartDateApprenticeship() {
+    return startDateApprenticeship;
+  }
 
-    protected Trainee(String firstName, String age, String surname, BigDecimal salary, boolean manager, Date startDateApprenticeship) {
-        super(firstName, age, surname, salary, manager);
-        this.startDateApprenticeship = startDateApprenticeship;
-    }
+  public int getLength() {
+    return length;
+  }
 
-    @Override
-    public String toString() {
-        return "Trainee{" +
-                "startDateApprenticeship=" + startDateApprenticeship +
-                '}';
-    }
+  public void setLength(int length) {
+    this.length = length;
+  }
 }

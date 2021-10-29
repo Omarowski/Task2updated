@@ -1,30 +1,38 @@
 package employee;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Worker extends Employee {
 
     // attributes
     // * employment date
     // * bonus
-    public final Date dateOfEmployment;
-    public final int bonus;
+    public LocalDate dateOfEmployment;
+    public BigDecimal bonus;
 
 
-    protected Worker(String firstName, String age, String surname, BigDecimal salary, boolean manager, Date dateOfEmployment, int bonus) {
-        super(firstName, age, surname, salary, manager);
+    public Worker(String firstName,String surname, LocalDate dob,  Manager manager , BigDecimal salary,
+                  LocalDate dateOfEmployment, BigDecimal bonus) {
+        super(firstName,surname, dob, manager,salary);
         this.dateOfEmployment = dateOfEmployment;
         this.bonus = bonus;
+        if(manager!=null){
+            manager.addSubordinates(this);
+        }
     }
 
-    @Override
-    public String toString() {
-        return "Worker{" +
-                "dateOfEmployment=" + dateOfEmployment +
-                ", bonus=" + bonus +
-                ","+ getFirstName() + "," +
-                getSurname() + "," + getAge() +
-                '}';
+    public LocalDate getDateOfEmployment() {
+        return dateOfEmployment;
     }
+
+    public void setDateOfEmployment(LocalDate dateOfEmployment) {
+        this.dateOfEmployment = dateOfEmployment;
+    }
+
+    public BigDecimal getBonus() {
+        return bonus;
+    }
+
+
 }
