@@ -16,15 +16,12 @@ public final class PayrollEntry {
         this.salaryPlusBonus = salary.add(bonus); // validate whether salary and bonus are not null
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public BigDecimal getSalaryPlusBonus() {
-        return salaryPlusBonus;
-    }
-
-    public BigDecimal getSalary() {
-        return salary;
+    @Override
+    public String toString() {
+        return "PayrollEntry{" +
+                "employee=" + employee +
+                ", salaryPlusBonus=" + salaryPlusBonus +
+                ", salary=" + salary +
+                '}';
     }
 }

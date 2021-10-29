@@ -4,20 +4,22 @@ import employee.Employee;
 import employee.Manager;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public final class HumanResourcesStatistics {
 
-    public static List<PayrollEntry> payroll(List<Employee> employees) {
-//		if (employees == null) {
-//			return null;
-//		}
-//		List<PayrollEntry> preparingPayroll = employees //
-//				.stream() //
-//				.map(emp -> emp.getSalary()//
-//				.collect(Collectors.toList());
-        return null;
+    public static List<PayrollEntry> payroll(List<Employee> employees) throws Exception {
+		if (employees == null) {
+			throw new Exception("No Employess");
+		}
+		List<PayrollEntry> preparingPayroll = new ArrayList<>();
+		employees.stream().forEach(
+		        e-> preparingPayroll.add(
+		                new PayrollEntry(e, e.getSalary(),
+                                new BigDecimal(0))));
+        return preparingPayroll;
     }
 
 

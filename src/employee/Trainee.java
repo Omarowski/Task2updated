@@ -5,18 +5,23 @@ import java.util.Date;
 
 public class Trainee extends Employee {
 
+  // attributes:
+  // * apprenticeship start date
+  // * apprenticeship length (in days)
+  private final Date startDateApprenticeship;
+  private int length;
 
-
-    // attributes:
-    // * apprenticeship start date
-    // * apprenticeship length (in days)
-    private final Date startDateApprenticeship;
-
-
-    protected Trainee(String firstName, String age, String surname, BigDecimal salary, boolean manager, Date startDateApprenticeship) {
-        super(firstName, age, surname, salary, manager);
-        this.startDateApprenticeship = startDateApprenticeship;
-    }
+  protected Trainee(
+      String firstName,
+      String dob,
+      String surname,
+      BigDecimal salary,
+      Manager manager,
+      Date startDateApprenticeship, int length) {
+    super(firstName, dob, surname, salary, manager, null);
+    this.startDateApprenticeship = startDateApprenticeship;
+    this.length = length;
+  }
 
     @Override
     public String toString() {
